@@ -2,57 +2,61 @@ package com.cryptek.leetcode.implementation;
 
 public class SinglyLinkedList<T> implements LinkedList<T> {
     private Node<T> head;
+    private int size = 0;
 
-    public SinglyLinkedList() {
-
-    }
     @Override
     public T get(int index) {
+        if (head == null || index >= size) return null;
         Node<T> curr = head;
-        for(int i=0; i<index; i++) {
-            if (curr == null) {throw new IllegalStateException("Index is invalid");}
-            curr = curr.next;
-        }
-        return curr == null ? null : curr.val;
+        for (int i=0; i<index; i++) curr = curr.next;
+        return curr.val;
     }
 
     @Override
     public void addAtHead(T val) {
-        Node<T> newNode = new Node<>(val, head);
-        head = newNode;
+        head = new Node<>(val, head);
+        size++;
     }
 
     @Override
     public void addAtTail(T val) {
+        if (head == null) {
+            addAtHead(val);
+            return;
+        }
         Node<T> curr = head;
-        while (curr.next != null) {curr = curr.next;}
+        while (curr.next != null) {
+            curr = curr.next;
+        }
         curr.next = new Node<>(val);
+        size++;
     }
 
     @Override
     public void addAtIndex(int index, T val) {
-        Node<T> curr = head;
-        for (int i=0; i<index-1; i++) {
-            if (curr == null) {throw new IllegalStateException("Index is invalid. Value will not be inserted.");}
-            curr = curr.next;
+        if (index > size) throw new IllegalStateException("Index in invalid. Value will not be inserted");
+        if (index == 0) {
+            addAtHead(val);
+            return;
         }
-        Node<T> oldNext = curr.next;
-        curr.next = new Node<>(val, oldNext);
+        Node<T> curr = head;
+        for (int i=0; i<index-1; i++) curr = curr.next;
+        curr.next = new Node<>(val, curr.next);
+        size++;
     }
 
     @Override
     public void deleteAtIndex(int index) {
+        if (head == null || index >= size) throw new IllegalStateException("Invalid index. No value will be deleted");
         if (index == 0) {
             head = head.next;
+            size--;
+            return;
         }
         Node<T> curr = head;
-        for (int i=0; i<index-1; i++) {
-            if (curr == null) {throw new IllegalStateException("Index is invalid");}
-            curr = curr.next;
-        }
-        if(curr.next != null) {
-            curr.next = curr.next.next;
-        }
+        for (int i=0; i<index-1; i++) curr = curr.next;
+        curr.next = curr.next.next;
+        size--;
     }
 
     private class Node<T> {
