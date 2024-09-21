@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class QueueTest {
+public class QueueTest {
 
   private Queue<Integer> queue;
 
