@@ -19,7 +19,7 @@ dependencies {
 }
 
 group = "com.cryptek"
-version = "1.0-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 description = "leetcode"
 java.sourceCompatibility = JavaVersion.VERSION_21
 java.targetCompatibility = JavaVersion.VERSION_21
