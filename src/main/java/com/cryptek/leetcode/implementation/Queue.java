@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Queue<T> {
-  private List<T> data;
+  private final List<T> data;
   private int head;
 
   public Queue() {
-    data = new ArrayList<T>();
+    data = new ArrayList<>();
     head = 0;
   }
 

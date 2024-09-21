@@ -7,14 +7,14 @@ public class CircularQueue<T> {
   /*
   Implement Circular queue of fixed size
    */
-  private List<T> data;
+  private final List<T> data;
   private int head;
   private int tail;
-  private int capacity;
+  private final int capacity;
   private int size;
 
   public CircularQueue(int capacity) {
-    data = new ArrayList<T>(capacity);
+    data = new ArrayList<>(capacity);
     for (int i = 0; i < capacity; i++) {
       data.add(null);
     }

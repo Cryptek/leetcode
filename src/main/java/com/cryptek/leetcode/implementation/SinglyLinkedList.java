@@ -59,15 +59,15 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
     size--;
   }
 
-  private class Node<T> {
+  private static class Node<T> {
     T val;
-    Node next;
+    Node<T> next;
 
     Node(T val) {
       this.val = val;
     }
 
-    Node(T val, Node next) {
+    Node(T val, Node<T> next) {
       this.val = val;
       this.next = next;
     }

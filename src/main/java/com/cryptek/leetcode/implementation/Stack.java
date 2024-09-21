@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Stack<T> {
-  private List<T> data;
+  private final List<T> data;
 
   public Stack() {
     //better memory use(dynamic), no extra allocation in beginning plus we only remove and add at end, no resizing when full
@@ -19,14 +19,14 @@ public class Stack<T> {
     if (isEmpty()) {
       throw new IllegalStateException("Stack is empty");
     }
-    return data.remove(data.size() - 1);
+    return data.removeLast();
   }
 
   public T peek() {
     if (isEmpty()) {
       throw new IllegalStateException("Stack is empty");
     }
-    return data.get(data.size() - 1);
+    return data.getLast();
   }
 
   public boolean isEmpty() {
